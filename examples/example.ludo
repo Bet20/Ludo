@@ -4,7 +4,7 @@
 a:num = 10
 b:num = 20
 
-sum:num a b => { 
+fun sum a b { 
     is a + b 
 }
 
