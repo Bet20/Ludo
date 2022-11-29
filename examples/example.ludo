@@ -1,0 +1,11 @@
+# Basic BAD eval
+
+# variable initialization
+a:num = 10
+b:num = 20
+
+sum:num a b => { 
+    is a + b 
+}
+
+res:num = sum 1 1
