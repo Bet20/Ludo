@@ -14,7 +14,7 @@ class Parser
 public:
     auto Program()
     {
-        return NumericLiteral();
+        return StringLiteral();
     }
 
     auto Parse(const std::string &data)
@@ -31,7 +31,16 @@ public:
         return a;
     };
 
-    void PrintASTNode(ASTNode<int> &node)
+    ASTNode<std::string> StringLiteral()
+    {
+        auto a = ASTNode<std::string>();
+        a.type = "StringLiteral";
+        a.value = this->_source;
+        return a;
+    };
+
+    template <typename T>
+    void PrintASTNode(T &node)
     {
         std::cout << "{ \nType: " << node.type << std::endl << "Value: " << node.value << std::endl << "}" << std::endl;
     };

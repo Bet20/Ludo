@@ -1,6 +1,7 @@
 #include "parser.cpp"
 #include <cmath>
 #include <cstddef>
+#include <ctype.h>
 #include <string>
 #include <valarray>
 
@@ -22,11 +23,14 @@ public:
     {
         return (this->_source.size() > _cursor);
     }
+    template <typename T>
     auto GetNextToken()
     {
-        auto ret = ASTNode<int>();
+        auto ret = ASTNode<T>;
         if (!this->HasMoreToken())
         {
+            ret.type = "EOF";
+            ret.value = -1;
             return ret;
         };
 
@@ -43,6 +47,30 @@ public:
             ret.value = std::stoi(number);
             return ret;
         };
+
+        if (isalpha(ch[0]))
+        {
+            auto chr = "";
+            while (isalpha(ch[this->_cursor]))
+            {
+                chr += ch[this->_cursor++];
+            }
+            ret.type = "StringLiteral";
+            ret.value = chr;
+        }
+
+        if (ch[0] == '{')
+        {
+        };
+        if (ch[0] == '}')
+        {
+        };
+        if (ch[0] == '_')
+        {
+        };
+        if (ch[0] == ' ')
+        {
+        }
         return ret;
     };
 

@@ -151,7 +151,7 @@ int main(int argc, char **argv)
     // }
 
     auto p = Parser();
-    auto l = p.Parse("45");
+    auto l = p.Parse("45asd");
     p.PrintASTNode(l);
 
     return 0;
